@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>To do list</title>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	</head>
+	<body>
+		<div><br/><strong>Maintain your to-do list!</strong></div>
+		<form>
+    		<div>
+        		<label for="todo">I need to:</label>
+        		<input type="text" id="todo" />
+        	</div>
+        	<button id ="add" type="button">Add to your to-do list!</button>
+        </form>
+        <div><strong>To-do list (click any item to remove from list):</strong></div>
+		<ul>
+		</ul>
+	</body>
+	<script>
+		$(document).ready(function() {
+  			$('#add').click(function() {
+  			 var $item = $('#todo')
+  			 $('ul').prepend("<li>"+$item.val()+"</li>");
+  			 $item.val("");
+  			});
+  		  $('ul').on('click', 'li', function() {
+			   $(this).remove();
+			   });
+        $(document).keypress(function(e) {
+          if(e.which == 13) {
+            var $item = $('#todo')
+            $('ul').prepend("<li>"+$item.val()+"</li>");
+            $item.val("");
+          }
+        })
+		});
+	</script>
+</html>
+
+
